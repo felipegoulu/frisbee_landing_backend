@@ -12,7 +12,7 @@ ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 PHONE_NUMBER_ID = os.getenv("PHONE_NUMBER_ID")
 VERSION = os.getenv("VERSION")
 
-APP_ID = os.getenv("APP_ID")
+#APP_ID = os.getenv("APP_ID")
 
 
 # --------------------------------------------------------------
