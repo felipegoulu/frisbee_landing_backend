@@ -17,6 +17,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://frizbee.site", # recibe api calls el site en vercel o del local host
+        "https://landing-frizbee.vercel.app", # recibe api calls el site en vercel o del local host
         "http://localhost:3000"
     ],  # Add your frontend URL
     allow_credentials=True,
