@@ -4,6 +4,12 @@ from send_message.initial_wpp_message import send_whatsapp_message
 from send_message.db import save_message, save_waitlist_user
 from fastapi.middleware.cors import CORSMiddleware
 
+import logging
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
 app = FastAPI()
 
 # Enable CORS
@@ -25,6 +31,8 @@ class WaitlistRequest(BaseModel):
 
 @app.post("/api/waitlist")
 async def join_waitlist(data: WaitlistRequest):
+    logger.info(f"Received request with data: {data}")
+
     try:
         save_waitlist_user(data.email, data.phone)
 
@@ -43,6 +51,8 @@ async def join_waitlist(data: WaitlistRequest):
         return {"status": "success", "wa_id": wa_id}
         
     except Exception as e:
+        logger.error(f"Error in join_waitlist: {str(e)}")
+
         raise HTTPException(status_code=500, detail=str(e))
 
 # For testing purposes
