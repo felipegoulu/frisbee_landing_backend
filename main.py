@@ -37,18 +37,19 @@ async def join_waitlist(data: WaitlistRequest):
         save_waitlist_user(data.email, data.phone)
 
         # Send WhatsApp message
-        response = send_whatsapp_message(data.phone)
+        #response = send_whatsapp_message(data.phone)
         
-        if response.status_code != 200:
-            raise HTTPException(status_code=400, detail="Failed to send WhatsApp message")
+        #if response.status_code != 200:
+        #    raise HTTPException(status_code=400, detail="Failed to send WhatsApp message")
         
         # Parse response and save initial message
-        response_data = response.json()
-        wa_id = response_data["contacts"][0]["wa_id"]
-        message_body = "¡Hola! Soy Frisbee, tu ayudante personal de compras en Jumbo 🛒. Te acompañaré a crear tu carrito ideal, personalizado según tus gustos y necesidades. ¿Comenzamos por conocer tus preferencias de compra?" 
-        save_message(wa_id, "assistant", message_body, "")
+        #response_data = response.json()
+        #wa_id = response_data["contacts"][0]["wa_id"]
+        #message_body = "¡Hola! Soy Frisbee, tu ayudante personal de compras en Jumbo 🛒. Te acompañaré a crear tu carrito ideal, personalizado según tus gustos y necesidades. ¿Comenzamos por conocer tus preferencias de compra?" 
+        #save_message(wa_id, "assistant", message_body, "")
         
-        return {"status": "success", "wa_id": wa_id}
+        #return {"status": "success", "wa_id": wa_id}
+        return {"status": "success"}
         
     except Exception as e:
         logger.error(f"Error in join_waitlist: {str(e)}")
